@@ -1,0 +1,46 @@
+<header
+  class="h-full lg:h-screen flex flex-col gap-5 justify-center items-center z-[99999999] pt-16"
+>
+  <div class="text-center flex flex-col gap-7">
+    <h1 class="text-6xl text-white font-semibold" [@slideInFromTop]>
+      See the world with
+    </h1>
+    <h2 class="text-7xl text-orange-500 font-extrabold" [@slideInFromTop]>
+      Fireflix.
+    </h2>
+  </div>
+  <div class="w-4/5 lg:w-1/2" [@slideInFromTop]>
+    <p class="text-center">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae et ex
+      officia repudiandae eaque saepe modi mollitia veritatis illo esse
+      similique iusto nobis cum, vitae maiores obcaecati incidunt aut. Modi.
+    </p>
+  </div>
+  <div class="flex justify-center items-center">
+    <p-button
+      (onClick)="this.scrollToElement()"
+      size="small"
+      severity="info"
+      label="Get Started"
+      class="w-full"
+      [@slideInFromTop]
+    />
+  </div>
+  <div
+    class="w-full lg:w-2/5 border-t border-gray-700 p-8 flex justify-between"
+    [@slideInFromLeftSvg]
+  >
+    <div class="text-gray-400 text-center">
+      <h3 class="font-semibold text-lg">Fireflix</h3>
+      <p>Good Choice</p>
+    </div>
+    <div class="text-gray-400 text-center">
+      <h3 class="font-semibold text-lg">Fireflix</h3>
+      <p>The Best</p>
+    </div>
+    <div class="text-gray-400 text-center">
+      <h3 class="font-semibold text-lg">Fireflix</h3>
+      <p>Good For You</p>
+    </div>
+  </div>
+</header>

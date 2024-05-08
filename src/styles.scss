@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;800&display=swap");
+@import "primeicons/primeicons.css";
+@layer tailwind-base, primeng, tailwind-utilities;
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
+
+* {
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  @apply bg-gray-800 text-gray-200;
+}
+
+::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-500;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+.slick-slide {
+  margin: 0 8px;
+}
+
+.slick-list {
+  margin: 0 -8px;
+}
+
+@media screen and (max-width: 768px) {
+  .slick-list {
+    margin: 0;
+  }
+
+  .slick-slide {
+    margin: 0;
+  }
+}

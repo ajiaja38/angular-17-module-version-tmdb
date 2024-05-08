@@ -1,0 +1,29 @@
+<div class="pt-4 container">
+  <app-header />
+  <app-badge id="now-playing">
+    <p>Now playing</p>
+  </app-badge>
+  <div class="mb-8">
+    <ngx-slick-carousel #slickModal="slick-carousel" [config]="slideConfig">
+      @for (playing of this.nowPlaying; track $index) {
+      <app-card-now-playing ngxSlickItem [nowPlaying]="playing" />
+      }
+    </ngx-slick-carousel>
+  </div>
+  <app-badge>
+    <p>Popular Movies</p>
+  </app-badge>
+  <div class="w-full grid grid-cols-1 lg:grid-cols-5 gap-5 mb-8">
+    @for (movie of popularMovies; track $index) {
+    <app-card [movie]="movie" />
+    }
+  </div>
+  <app-badge>
+    <p>Top Rated Movies</p>
+  </app-badge>
+  <div class="w-full grid grid-cols-1 lg:grid-cols-5 gap-5">
+    @for (movie of topRated; track $index) {
+    <app-card [movie]="movie" />
+    }
+  </div>
+</div>

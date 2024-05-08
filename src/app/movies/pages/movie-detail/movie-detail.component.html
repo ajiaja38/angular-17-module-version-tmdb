@@ -1,0 +1,107 @@
+@defer {
+<div class="relative pt-16">
+  <div
+    class="absolute inset-0 bg-gradient-to-t from-gray-800 via-gray-800/55 to-gray-800"
+  ></div>
+  <div
+    class="w-full h-fit bg-cover bg-center flex justify-center"
+    [ngStyle]="{
+      'background-image':
+        'url(' +
+        'https://image.tmdb.org/t/p/original' +
+        this.movie.poster_path +
+        ')'
+    }"
+  >
+    <div
+      class="container p-6 flex flex-col md:flex-row gap-3 justify-around z-[999]"
+    >
+      <img
+        src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"
+        class="h-[30rem] rounded-lg"
+        [@slideInFromTop]
+      />
+      <div class="w-full md:w-2/3 p-2 flex flex-col gap-4">
+        <div class="flex flex-col gap-1" [@slideInFromLeft]>
+          <h1 class="text-4xl font-bold text-center md:text-left">
+            {{ this.movie.title }} ({{ this.movie.release_date | releaseYear }})
+          </h1>
+          <h2 class="font-light text-2xl md:text-3xl text-center md:text-left">
+            {{ this.movie.tagline }}
+          </h2>
+          <div class="flex gap-3 mt-2 mx-auto md:mx-0">
+            <div
+              class="bg-green-400 p-1 px-2 text-gray-900 rounded-full font-semibold"
+            >
+              Rate: {{ this.movie.vote_average | rating }}
+            </div>
+            <div
+              class="bg-yellow-400 p-1 px-2 text-gray-900 rounded-full font-semibold"
+            >
+              Lang: {{ this.movie.original_language }}
+            </div>
+            <div
+              class="bg-red-400 p-1 px-2 text-gray-900 rounded-full font-semibold"
+            >
+              {{ this.movie.runtime }} minute
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-1" [@slideInFromLeft]>
+          <p class="md:text-lg font-bold">Genres:</p>
+          <div class="flex gap-2">
+            @for (genre of this.movie.genres; track $index) {
+            <div
+              class="bg-gray-100 p-1 px-2 text-gray-700 rounded font-semibold"
+            >
+              {{ genre.name }}
+            </div>
+            }
+          </div>
+        </div>
+        <div class="flex flex-col gap-1" [@slideInFromLeft]>
+          <p class="md:text-lg font-bold">Overview:</p>
+          <p class="text-justify md:text-lg">{{ this.movie.overview }}</p>
+        </div>
+        <div class="flex flex-col gap-1" [@slideInFromTop]>
+          <p class="md:text-lg font-bold">Cast:</p>
+          <ngx-slick-carousel
+            #slickModal="slick-carousel"
+            [config]="this.slideCastConfig"
+          >
+            @for (cast of this.cast; track $index) {
+            <div ngxSlickItem>
+              <img
+                src="https://image.tmdb.org/t/p/w500/{{ cast.profile_path }}"
+                alt="{{ cast.name }}"
+                class="w-23 object-cover object-center rounded"
+              />
+              <p class="text-center text-sm mt-2 font-semibold">
+                {{ cast.name }}
+              </p>
+              <p class="text-center text-sm">as {{ cast.character }}</p>
+            </div>
+            }
+          </ngx-slick-carousel>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <app-badge [hidden]="!this.similar.length">
+    <p>Similar Movies</p>
+  </app-badge>
+  <ngx-slick-carousel
+    class="carousel"
+    #slickModal="slick-carousel"
+    [config]="slideConfig"
+  >
+    @for (movie of similar; track $index) {
+    <app-card ngxSlickItem [movie]="movie" />
+    }
+  </ngx-slick-carousel>
+</div>
+}@placeholder(minimum 2s) {
+<header-skeleton />
+}
